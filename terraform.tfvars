@@ -1,5 +1,0 @@
-aws_access_key = ""
-aws_secret_key = ""
-aws_session_token = ""
-aws_key_path = "~/.ssh/pk-dc0-infra.pem"
-aws_key_name = "pk-dc0-infra"

@@ -3,11 +3,20 @@ resource "aws_vpc" "integration" {
     enable_dns_hostnames = true
     tags {
         Name = "integration"
+        Stream = "${var.stream_tag}"
+        CostCenter = "${var.costcenter_tag}"
+        Environment = "${var.environment_tag}"
     }
 }
 
 resource "aws_internet_gateway" "integration-gw" {
     vpc_id = "${aws_vpc.integration.id}"
+    tags {
+        Name = "integration"
+        Stream = "${var.stream_tag}"
+        CostCenter = "${var.costcenter_tag}"
+        Environment = "${var.environment_tag}"
+    }
 }
 
 /*
@@ -70,7 +79,10 @@ resource "aws_security_group" "integration-nat-sg" {
     vpc_id = "${aws_vpc.integration.id}"
 
     tags {
-        Name = "NATSG"
+        Name = "INT-NAT-SG"
+        Stream = "${var.stream_tag}"
+        CostCenter = "${var.costcenter_tag}"
+        Environment = "${var.environment_tag}"
     }
 }
 
@@ -85,7 +97,10 @@ resource "aws_instance" "integration-nat-a-ec2" {
     source_dest_check = false
 
     tags {
-        Name = "VPC NAT"
+        Name = "VPC NAT",
+        Stream = "${var.stream_tag}"
+        CostCenter = "${var.costcenter_tag}"
+        Environment = "${var.environment_tag}"
     }
 }
 
@@ -105,6 +120,9 @@ resource "aws_subnet" "integration-a-public" {
 
     tags {
         Name = "IntegrationPublicA"
+        Stream = "${var.stream_tag}"
+        CostCenter = "${var.costcenter_tag}"
+        Environment = "${var.environment_tag}"
     }
 }
 
@@ -118,6 +136,9 @@ resource "aws_route_table" "integration-a-public" {
 
     tags {
         Name = "Public A Subnet"
+        Stream = "${var.stream_tag}"
+        CostCenter = "${var.costcenter_tag}"
+        Environment = "${var.environment_tag}"
     }
 }
 
@@ -137,6 +158,9 @@ resource "aws_subnet" "integration-a-private" {
 
     tags {
         Name = "IntegrationPrivateA"
+        Stream = "${var.stream_tag}"
+        CostCenter = "${var.costcenter_tag}"
+        Environment = "${var.environment_tag}"
     }
 }
 
@@ -150,6 +174,9 @@ resource "aws_route_table" "integration-a-private" {
 
     tags {
         Name = "Private Subnet"
+        Stream = "${var.stream_tag}"
+        CostCenter = "${var.costcenter_tag}"
+        Environment = "${var.environment_tag}"
     }
 }
 

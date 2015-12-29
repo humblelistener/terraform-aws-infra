@@ -2,6 +2,20 @@ variable "aws_access_key" {}
 variable "aws_secret_key" {}
 variable "aws_key_path" {}
 variable "aws_key_name" {}
+  
+variable "environment_tag" {
+  description = "Role of the ec2 instance, defaults to <DEV>"
+  default = "DEV"
+}
+
+variable "costcenter_tag" {
+  description = "Role of the ec2 instance, defaults to <DEV>"
+  default = "DEV"
+}
+# group our resources
+variable "stream_tag" {
+  default = "default"
+}
 
 variable "aws_region" {
     description = "EC2 Region for the VPC"
