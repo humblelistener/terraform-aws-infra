@@ -104,7 +104,7 @@ resource "aws_subnet" "integration-a-public" {
     availability_zone = "ap-southeast-2a"
 
     tags {
-        Name = "Integration Public Subnet"
+        Name = "IntegrationPublicA"
     }
 }
 
@@ -136,7 +136,7 @@ resource "aws_subnet" "integration-a-private" {
     availability_zone = "ap-southeast-2a"
 
     tags {
-        Name = "Private Subnet"
+        Name = "IntegrationPrivateA"
     }
 }
 
